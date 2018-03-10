@@ -1,0 +1,8 @@
+http://www.asp.net
+code .
+dotnet new console
+dotnet restore
+dotnet build
+dotnet run
+dotnet add package Microsoft.AspNetCore
+dotnet restore
