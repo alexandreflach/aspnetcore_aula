@@ -15,7 +15,8 @@ namespace mvc.Controllers
         private IPeopleRepository _peopleRepository;
         private IConfiguration _configuration;
 
-        public HomeController(IPeopleRepository peopleRepository, IConfiguration configuration){
+        public HomeController(IPeopleRepository peopleRepository, IConfiguration configuration)
+        {
             _peopleRepository = peopleRepository;
             _configuration = configuration;
         }
@@ -43,6 +44,12 @@ namespace mvc.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult People()
+        {
+            var people = new mvc.Models.People { Name = "Catiana", Age = 30 };
+            return View(people);
         }
     }
 }

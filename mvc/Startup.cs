@@ -48,8 +48,18 @@ namespace mvc
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                        name: "default",
+                        template: "{controller=Home}/{action=Index}/{id?}")
+                    .MapRoute(
+                        name: "about-rout",
+                        template: "about",
+                        defaults: new { controller = "Home", action = "About"}
+                    )
+                    .MapRoute(
+                        name: "contact-rout",
+                        template: "contact",
+                        defaults: new { controller = "Home", action = "Contact"}
+                    );
             });
         }
     }
