@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using mvc.Data;
 using mvc.Repository;
 
 namespace mvc
@@ -22,8 +24,10 @@ namespace mvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetSection("ConnectionString")["BancoDaAula4"]));
             services.AddMvc();
-
+            Console.WriteLine("Database Connection: "+ Configuration.GetConnectionString("BancoDaAula4"));
             //injeção de dependência
             services.AddTransient<IPeopleRepository>(repository => new PeopleRepository("http://sqlserver"));
             //services.AddScoped(); //por requisição
