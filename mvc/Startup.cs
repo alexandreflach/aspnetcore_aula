@@ -27,7 +27,6 @@ namespace mvc
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetSection("ConnectionString")["BancoDaAula4"]));
             services.AddMvc();
-            Console.WriteLine("Database Connection: "+ Configuration.GetConnectionString("BancoDaAula4"));
             //injeção de dependência
             services.AddTransient<IPeopleRepository>(repository => new PeopleRepository("http://sqlserver"));
             //services.AddScoped(); //por requisição

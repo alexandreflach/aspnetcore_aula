@@ -13,10 +13,7 @@ namespace mvc.Data
         public DbSet<Category> Categories { get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<Product>().ToTable("product");
-            modelBuilder.Entity<Product>().Property(p => p.Name).HasMaxLength(100).HasColumnName("name");
-            modelBuilder.Entity<Category>().ToTable("category");
-            modelBuilder.Entity<Category>().Property(c => c.Name).HasMaxLength(50).HasColumnName("name");
+            
         }
     }
 }

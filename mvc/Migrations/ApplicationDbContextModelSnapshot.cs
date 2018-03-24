@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.EntityFrameworkCore.Storage.Internal;
 using mvc.Data;
 using System;
 
@@ -25,13 +23,11 @@ namespace mvc.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name")
-                        .HasColumnName("name")
-                        .HasMaxLength(50);
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("mvc.Models.Product", b =>
@@ -42,15 +38,13 @@ namespace mvc.Migrations
                     b.Property<int?>("CategoryId");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnName("name")
-                        .HasMaxLength(100);
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("mvc.Models.Product", b =>

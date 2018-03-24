@@ -1,0 +1,24 @@
+@model mvc.Models.Category
+@using mvc.Models;
+
+@{
+    ViewData["Title"] = "Cadastro de Categoria";
+}
+
+@foreach(var item in ViewBag.categories as List<Category>){
+   <li>@item.Name <a href="/Category/Index/@item.Id">Editar</a></li> 
+    <form asp-controller="Category" asp-action="Delete" method="POST">
+        <input type="hidden" name="id" value="@item.Id" />
+        <button type="submit" class="btn btn-default">Deletar</button>
+    </form>
+    }
+
+<form asp-controller="Category" asp-action="Register" method="POST">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="Name">Nome</label>
+        <input asp-for="Name" required />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <button type="submit" class="btn btn-default">Salvar</button>
+</form>
