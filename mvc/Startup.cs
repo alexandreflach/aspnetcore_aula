@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using mvc.Data;
 using mvc.Models;
 using mvc.Repository;
+using mvc.Services;
 
 namespace mvc
 {
@@ -32,7 +33,8 @@ namespace mvc
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            // Add application services.
+            services.AddTransient<IEmailSender, EmailSender>();
             services.AddMvc();
             //injeção de dependência
             services.AddTransient<IPeopleRepository>(repository => new PeopleRepository("http://sqlserver"));
