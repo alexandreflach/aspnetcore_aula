@@ -83,6 +83,14 @@ namespace mvc
                         defaults: new { controller = "Home", action = "Contact"}
                     );
             });
+
+            /*
+            var roleManager = app.ApplicationServices.GetService<RoleManager<IdentityRole>>();
+            if(!roleManager.RoleExistsAsync("ADMIN").Result)
+                roleManager.CreateAsync(new IdentityRole("ADMIN"));
+            if(!roleManager.RoleExistsAsync("MANAGER").Result)
+                roleManager.CreateAsync(new IdentityRole("MANAGER"));
+                 */
         }
     }
 }

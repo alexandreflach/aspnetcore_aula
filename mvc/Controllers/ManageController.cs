@@ -16,7 +16,7 @@ using mvc.Services;
 
 namespace mvc.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "ADMIN")]
     [Route("[controller]/[action]")]
     public class ManageController : Controller
     {
